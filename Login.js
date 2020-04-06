@@ -46,8 +46,26 @@ Ext.application({
              text: 'Войти',
              listeners: {
                 click: function(){
+
                     if ((Ext.getCmp("login").getValue()=="Admin")&&(Ext.getCmp("password").getValue()=="123456"))
-                   window.location.assign('Вошли в систему.html');
+                  /* Ext.Ajax.request({
+                       url: 'JDBCPostgreSQLExample.java',
+                    //   method: 'POST',
+                       params:{
+                              username: Ext.getCmp("login").getValue(),
+                              password: Ext.getCmp("password").getValue()
+                       },
+
+                         success: function(response, opts) {
+                               var obj = Ext.decode(response.responseText);
+                               console.dir(obj);
+                           },
+                       failure: function(response, options){
+                               alert("Ошибка: " + response.statusText);
+                       }
+                   })
+                  */
+                 window.location.assign('Window.html');
                     else
                     alert("Данного пользователя нет в системе");
                 }
