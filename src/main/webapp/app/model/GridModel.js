@@ -7,6 +7,12 @@ Ext.define('webapp.model.GridModel', {
         object: '',
         status:'',
         price:'',
-        subject:''
+        subject:'',
+        definition:'',
+        phone:'',
+        name_thing:'',
+        trademark:'',
+        volume:'',
+        date:'',
     }
 })

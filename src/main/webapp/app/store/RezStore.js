@@ -1,6 +1,6 @@
-Ext.define('webapp.store.GridStore',{
+Ext.define('webapp.store.RezStore',{
     extend:'Ext.data.Store',
-    alias:'store.gridstore',
+    alias:'store.rezstore',
     requires : [
         'webapp.model.GridModel'
     ],
@@ -12,10 +12,10 @@ Ext.define('webapp.store.GridStore',{
     proxy: {
         type: 'ajax',
         api: {
-            create: 'grids',
-            read: 'grids',
-            destroy: 'grids',
-            update: 'grids'
+            create: 'rez',
+            read: 'rez',
+            destroy: 'rez',
+            update: 'rez'
         },
         reader: {
             type: 'json',

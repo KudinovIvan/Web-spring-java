@@ -9,14 +9,25 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name ="zak")
-public class Grid {
+@Table(name ="bell")
+public class Bell {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userid;
+    private int id;
 
-    @Column(name = "bell")
-    private String bell;
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "id_user")
+    private int user;
 
     public String getBell() {
         return bell;
@@ -26,38 +37,16 @@ public class Grid {
         this.bell = bell;
     }
 
-    public int getUserid() {
-        return userid;
+    @Column(name = "bell")
+    private String bell;
+
+    public int getUser() {
+        return user;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUser(int user) {
+        this.user = user;
     }
-
-    @Column(name = "code")
-    private String code;
-
-    public String getDateStr() {
-        return dateStr;
-    }
-
-    public void setDateStr(String dateStr) {
-        this.dateStr = dateStr;
-    }
-
-    public String getDendStr() {
-        return dendStr;
-    }
-
-    public void setDendStr(String dendStr) {
-        this.dendStr = dendStr;
-    }
-
-    @Column(name = "date_string")
-    private String dateStr;
-
-    @Column(name = "dend_string")
-    private String dendStr;
 
     @Column(name = "name")
     private String name;
@@ -68,6 +57,17 @@ public class Grid {
     @Column(name = "object")
     private String object;
 
+    @Column(name = "subject")
+    private String sunject;
+
+    public String getSunject() {
+        return sunject;
+    }
+
+    public void setSunject(String sunject) {
+        this.sunject = sunject;
+    }
+
     @Column(name = "status")
     private String status;
 
@@ -77,23 +77,8 @@ public class Grid {
     @Column(name="ei")
     private String ei;
 
-    @Column(name="name_org")
-    private String name_org;
-
-    @Column(name="inn")
-    private String inn;
-
-    @Column(name="email")
-    private String email;
-
-    @Column(name="adres")
-    private String adres;
-
     @Column(name = "price")
     private Integer price;
-
-    @Column(name = "sunject")
-    private String subject;
 
     @Column(name = "definition")
     private String definition;
@@ -108,24 +93,10 @@ public class Grid {
     private String trademark;
 
     @Column(name = "volume")
-    private String volume;
+    private int volume;
 
     @Column(name = "date")
     private Date date;
-
-    @Column(name="section")
-    private String section;
-
-    @Column(name="sd")
-    private String phere;
-
-    public int getId() {
-        return userid;
-    }
-
-    public void setId(int userid) {
-        this.userid = userid;
-    }
 
     public String getCode() {
         return code;
@@ -167,52 +138,12 @@ public class Grid {
         this.price = price;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public Date getDend() {
         return dend;
     }
 
     public void setDend(Date dend) {
         this.dend = dend;
-    }
-
-    public String getName_org() {
-        return name_org;
-    }
-
-    public void setName_org(String name_org) {
-        this.name_org = name_org;
-    }
-
-    public String getInn() {
-        return inn;
-    }
-
-    public void setInn(String inn) {
-        this.inn = inn;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAdres() {
-        return adres;
-    }
-
-    public void setAdres(String adres) {
-        this.adres = adres;
     }
 
     public String getEi() {
@@ -229,24 +160,6 @@ public class Grid {
 
     public void setValute(char valute) {
         this.valute = valute;
-    }
-
-
-    public String getSection() {
-        return section;
-    }
-
-    public void setSection(String section) {
-        this.section = section;
-    }
-
-
-    public String getPhere() {
-        return phere;
-    }
-
-    public void setPhere(String phere) {
-        this.phere = phere;
     }
 
     public Date getDate() {
@@ -289,11 +202,11 @@ public class Grid {
         this.trademark = trademark;
     }
 
-    public String getVolume() {
+    public int getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 

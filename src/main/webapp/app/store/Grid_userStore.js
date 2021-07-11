@@ -1,6 +1,6 @@
-Ext.define('webapp.store.GridStore',{
+Ext.define('webapp.store.Grid_userStore',{
     extend:'Ext.data.Store',
-    alias:'store.gridstore',
+    alias:'store.grid_userstore',
     requires : [
         'webapp.model.GridModel'
     ],
@@ -8,14 +8,13 @@ Ext.define('webapp.store.GridStore',{
 
     autoLoad: true,
     autoSync: true,
-
     proxy: {
         type: 'ajax',
         api: {
-            create: 'grids',
-            read: 'grids',
-            destroy: 'grids',
-            update: 'grids'
+            create: 'grids_user',
+            read: 'grids_user',
+            destroy: 'grids_user',
+            update: 'grids_user'
         },
         reader: {
             type: 'json',

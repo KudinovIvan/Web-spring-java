@@ -11,6 +11,7 @@ Ext.define('webapp.view.main.MainController', {
         Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     },
 
+
     onConfirm: function (choice) {
         if (choice === 'yes') {
             //

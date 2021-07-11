@@ -1,31 +1,49 @@
+
 Ext.define('webapp.controller.LoginController', {
     extend : 'Ext.app.ViewController',
 
     alias: 'controller.login',
 
-    onLoginClick() {
-
-        this.checkLoginAndPassword({
-            login: this.getViewModel().get('login'),
-            password: this.getViewModel().get('password')
-        }).then(result => {
-            if (result.success) {
-                if (result.login === "Admin"){
-                    this.onLoginSuccessAdmin();
-                }
-                else if (result.login === "Director"){
-                    this.onLoginSuccessDirector();
-                }
-                else{
-                    this.onLoginSuccessUser();
-                }
-            } else {
-                this.onLoginFailure();
-            }
-        }).otherwise(console.error);
-
+    rotes:{
+        'user_front': 'UserFront'
     },
 
+    onLoginClick() {
+
+        login_title = Ext.getCmp('login123').getValue();
+        this.checkLogin({
+            login: Ext.getCmp('login123').getValue()
+        }).then( result => {
+            if (result.success) {
+                this.checkpassword({
+                    login: Ext.getCmp('login123').getValue()},
+                {
+                    password: Ext.getCmp('password').getValue()
+                }).then(result => {
+                    if (result.success) {
+                        id_user = result.id;
+                        if (result.users_right === "Администратор") {
+                            this.onLoginSuccessAdmin();
+                        } else if (result.users_right === "Директор") {
+                            this.onLoginSuccessDirector();
+                        } else if (result.users_right === "Пользователь") {
+                            this.onLoginSuccessUser();
+                        }
+                    } else {
+                        this.onPasswordFailure();
+                    }
+                }).otherwise(console.error)
+            }
+            else{
+                this.onLoginFailure();
+            }
+        })
+    },
+
+
+    UserFront(){
+        this.getView().close();
+    },
 
     privates:{
         onLoginSuccessAdmin(){
@@ -33,31 +51,48 @@ Ext.define('webapp.controller.LoginController', {
             this.getView().close();
            },
         onLoginSuccessUser(){
-            this.fireViewEvent('logincloseuser');
+           this.fireViewEvent('logincloseuser');
             this.getView().close();
         },
         onLoginSuccessDirector(){
-            /*this.fireViewEvent('loginclose');
+            this.fireViewEvent('loginclosedirector');
             this.getView().close();
-        */
-            console.log("Director");
             },
 
         onLoginFailure(){
-            Ext.Msg.alert("Ошибка","Данного пользователя нет в системе");
+            Ext.Msg.alert("Ошибка","Пользователя с данным логином нет в системе, попробуйте еще раз");
+            LoginVType = false;
+            PasswordVType = true;
+         },
+        onPasswordFailure(){
+            Ext.Msg.alert("Ошибка","Неверный пароль, попробуйте еще раз");
+            LoginVType = true;
+            PasswordVType = false;
         },
-        checkLoginAndPassword({login, password}){
-        return  Ext.Ajax.request({
+        checkLogin(login){
+            return  Ext.Ajax.request({
                 method: 'post',
                 url:'http://localhost:8080/login',
+                waitMsg : 'Please wait...',
+                params:{
+                    login
+                }
+            }).then(response => {
+                return Ext.decode(response.responseText)
+            })
+        },
+        checkpassword(login,password){
+            return  Ext.Ajax.request({
+                method: 'post',
+                url:'http://localhost:8080/password',
+                waitMsg : 'Please wait...',
                 params:{
                     login,
                     password
                 }
             }).then(response => {
-                console.log(response.responseText);
                 return Ext.decode(response.responseText)
-        })
+            })
         }
     }
 });

@@ -10,11 +10,11 @@ var step = [
 ];
 
 var reg = [
-    [1, '19 Хакассия'],
+    [1, '19 Хакасия'],
    [2, '22 Алтайский край'],
    [3, '25 125 Приморский край'],
    [4, '27 Хабаровский край'],
-   [5, '47 Ленинградскай область'],
+   [5, '47 Ленинградская область'],
    [6, '78 98 178 Санкт-Петербург'],
 ];
 
@@ -33,7 +33,7 @@ var cash = [
 ];
 
 Ext.define('webapp.view.UserWin.ExtendSearch', {
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.panel.Panel',
     alias: 'widget.extendSearch',
     bodyPadding: 10,
     layout:{
@@ -51,6 +51,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
             
             xtype: 'combobox',
             value: 'Секции',
+            id:'section',
             store: new Ext.data.SimpleStore({
                 id:0,
                fields:
@@ -60,13 +61,14 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
                ],
                data:sek
            }),
-           valueField:'myId',
+           valueField:'myText',
             displayField:'myText',
             queryMode:'local'
         },
         {
             
             xtype: 'combobox',
+            id:'step',
             value: 'Этапы',
             store: new Ext.data.SimpleStore({
                 id:0,
@@ -77,7 +79,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
                ],
                data:step
            }),
-           valueField:'myId',
+           valueField:'myText',
             displayField:'myText',
             queryMode:'local'
         },
@@ -85,6 +87,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
             
             xtype: 'combobox',
             value: 'Регионы',
+            id:'subject',
             store: new Ext.data.SimpleStore({
                 id:0,
                fields:
@@ -94,7 +97,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
                ],
                data:reg
            }),
-           valueField:'myId',
+           valueField:'myText',
             displayField:'myText',
             queryMode:'local'
         },],
@@ -106,11 +109,13 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
         items:[{
             xtype: 'textfield',
             emptyText:'Адреса места поставки',
+            id:'adres1',
             maxLength: 100,
         }, {
             
             xtype: 'combobox',
             value: 'Сфера деятельности',
+            id:'sphere',
             store: new Ext.data.SimpleStore({
                 id:0,
                fields:
@@ -120,7 +125,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
                ],
                data:sphere
            }),
-           valueField:'myId',
+           valueField:'myText',
             displayField:'myText',
             queryMode:'local'
         },{
@@ -131,7 +136,8 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
             xtype: 'textfield',
             fieldLabel: 'с',
             labelWidth: 'auto',
-            emptyText:'Начальная цена',
+            emptyText:'Минимальная цена',
+            id:'price_from',
             maxLength: 100,
         }]
     },
@@ -143,11 +149,13 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
         xtype: 'textfield',
             fieldLabel: 'по',
             labelWidth: 'auto',
-            emptyText:'Конечная цена цена',
+            id:'price_to',
+            emptyText:'Максимальная цена',
             maxLength: 100,
     }, {
         
         xtype: 'combobox',
+        id:'valute',
         value: 'Валюта',
         store: new Ext.data.SimpleStore({
             id:0,
@@ -158,7 +166,7 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
            ],
            data:cash
        }),
-       valueField:'myId',
+       valueField:'myText',
         displayField:'myText',
         queryMode:'local'
     },{
@@ -168,7 +176,8 @@ Ext.define('webapp.view.UserWin.ExtendSearch', {
         anchor: '100%',
         fieldLabel: 'с',
         labelWidth: 'auto',
-        name: 'from_date',
+        name: 'date_from',
+        id:'date_from',
         emptyText: "Дата публикации",
         maxValue: new Date() // Ограничено вводом текущей даты или ранее
     }
@@ -182,7 +191,8 @@ items:[{
     anchor: '100%',
     fieldLabel: 'по',
     labelWidth: 'auto',
-    name: 'from_date',
+    name: 'date_to',
+    id:'date_to',
     emptyText: "Дата публикации",
     maxValue: new Date() // Ограничено вводом текущей даты или ранее
 }, {
@@ -192,9 +202,9 @@ items:[{
     anchor: '100%',
     fieldLabel: 'с',
     labelWidth: 'auto',
-    name: 'from_date',
-    emptyText: "Дата окончания",
-    maxValue: new Date() // Ограничено вводом текущей даты или ранее
+    name: 'date_end_from',
+    id:'date_end_from',
+    emptyText: "Дата окончания"
 }, {
     width:25,
 },{
@@ -202,9 +212,9 @@ items:[{
     anchor: '100%',
     fieldLabel: 'по',
     labelWidth: 'auto',
-    name: 'from_date',
-    emptyText: "Дата окончания",
-    maxValue: new Date() // Ограничено вводом текущей даты или ранее
+    name: 'date_end_to',
+    id:'date_end_to',
+    emptyText: "Дата окончания"
 }
 ]
 },

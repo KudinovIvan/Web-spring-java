@@ -1,14 +1,12 @@
 Ext.define('webapp.view.DirectorWin.DirView', {
+    width:1000,
     extend: 'Ext.form.Panel',
     alias: 'widget.dirview',
-    viewmodel: 'admin',
-    requires: [ 'webapp.controller.AdminController',
+    requires: [ 'webapp.controller.DirectorController',
         'webapp.model.GridModel'],
-    controller: 'admin',
-    title: {
+    /*title: {
         height:20,
-    },
-
+    },*/
     layout: {
         type: 'border'
     },
@@ -19,26 +17,22 @@ Ext.define('webapp.view.DirectorWin.DirView', {
             layout: {
                 type: 'vbox'
             },
-            items:[
+           /* items:[
                 {
-                    layout:{
-                        type: 'hbox'
-                    },
                     region: 'north',
-                    height:40,
-                        margin:'5 0 10 600',
-                        xtype: 'displayfield',
-                        value: "Director",
-
-                },
-                {
-                    margin:'0 600 0 600',
-                    xtype:'panel',
-                    layout: {
-                        type: 'hbox'
-                    },
+                    height:85,
                 }
-            ],
+            ],*/
+            /*buttons:[{
+                //text:"Выход",
+                iconCls:'x-fa fa-power-off',
+                height:56,
+                weight: 100,
+                margin:'0 200 0 0',
+                listeners:{
+                    click: 'Exit'
+                }
+            }]*/
         }, {
             xtype: 'dirgrid',
             region: 'center'
