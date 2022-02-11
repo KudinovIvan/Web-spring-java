@@ -20,7 +20,7 @@
 		<commons.io.version>2.4</commons.io.version>
 		<commons.codec.version>1.9</commons.codec.version>
 		<jsonpath.version>2.1.0</jsonpath.version>
-		<json-smart.version>2.2</json-smart.version>
+		<json-smart.version>2.4.5</json-smart.version>
 	</properties>
 
 	<dependencies>
